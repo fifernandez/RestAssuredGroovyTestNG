@@ -1,0 +1,24 @@
+package tests
+
+import common.BasePath
+import config.Configuration
+import io.restassured.RestAssured
+import io.restassured.builder.RequestSpecBuilder
+import io.restassured.http.ContentType
+import io.restassured.specification.RequestSpecification
+import org.testng.annotations.BeforeClass
+
+class Base {
+
+    @BeforeClass
+    public static void setupRestAssured() {
+        Configuration.loadAllConfigs()
+        RestAssured.baseURI = BasePath.getBasePath()
+        RestAssured.basePath = "/"
+        RequestSpecification requestSpecification = new RequestSpecBuilder().
+                addHeader("Content-Type", ContentType.JSON.toString()).
+                addHeader("Accept", ContentType.JSON.toString())
+                .build()
+        RestAssured.requestSpecification = requestSpecification
+    }
+}
