@@ -55,10 +55,10 @@ class Configuration {
     }
 
     static void loadAllConfigs() {
-        println "loading all configs"
         Assert.assertTrue("Failed to load environments values from file.", loadEnvironments())
         Assert.assertTrue("Failed to load base paths and uris.", loadPaths())
         Assert.assertTrue("Failed to load endpoints.", loadEndpoints())
+        println "Configurations loaded."
     }
 
     static void main(String[] args) {
