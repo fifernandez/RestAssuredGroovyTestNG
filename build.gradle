@@ -30,7 +30,8 @@ task moveCategories(type: Copy) {
 }
 
 test {
-    finalizedBy moveCategories
+    //disabling this because it breaks the report with github actions
+    //finalizedBy moveCategories
 
     if (System.getProperty("tags") != null) {
         systemProperty("tags", System.getProperty("tags"))
